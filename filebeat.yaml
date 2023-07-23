@@ -1,0 +1,10 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - '/var/log/kern.log'
+
+output.kafka:
+  hosts: ["kafka:9092"]
+  topic: "log"
+  codec.format:
+    string: '%{[@timestamp]} %{[message]}'
